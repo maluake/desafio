@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.env
+data/index/
+data/runtime/
+evals/reports/
+

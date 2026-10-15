@@ -1,0 +1,33 @@
+groups:
+  - name: getnet-multiagent
+    rules:
+      - alert: HighP95Latency
+        expr: histogram_quantile(0.95, sum(rate(chat_request_latency_seconds_bucket[5m])) by (le)) > 15
+        for: 10m
+        labels: {severity: warning}
+        annotations: {summary: "p95 chat latency above 15s"}
+      - alert: LLMDegradedToOffline
+        expr: sum(rate(agent_errors_total[5m])) / clamp_min(sum(rate(chat_requests_total[5m])), 1e-9) > 0.1
+        for: 5m
+        labels: {severity: critical}
+        annotations: {summary: ">10% of requests falling back to offline policies (LLM errors)"}
+      - alert: ToolErrorRateHigh
+        expr: sum(rate(tool_calls_total{status="error"}[10m])) by (tool) / clamp_min(sum(rate(tool_calls_total[10m])) by (tool), 1e-9) > 0.2
+        for: 10m
+        labels: {severity: warning}
+        annotations: {summary: "Tool {{ $labels.tool }} failing in >20% of calls"}
+      - alert: EscalationSpike
+        expr: sum(rate(escalations_total[30m])) / clamp_min(sum(rate(chat_requests_total[30m])), 1e-9) > 0.25
+        for: 30m
+        labels: {severity: warning}
+        annotations: {summary: "More than 25% of conversations handed off to humans"}
+      - alert: RAGMissRateHigh
+        expr: sum(rate(rag_retrievals_total{hit="miss"}[30m])) / clamp_min(sum(rate(rag_retrievals_total[30m])), 1e-9) > 0.2
+        for: 30m
+        labels: {severity: warning}
+        annotations: {summary: "Knowledge base returning no results for >20% of searches (content gap?)"}
+      - alert: NegativeFeedbackSpike
+        expr: sum(rate(user_feedback_total{rating="-1"}[1h])) / clamp_min(sum(rate(user_feedback_total[1h])), 1e-9) > 0.3
+        for: 1h
+        labels: {severity: warning}
+        annotations: {summary: "More than 30% thumbs-down in the last hour"}

@@ -1,0 +1,105 @@
+{
+  "_comment": "Synthetic customer data. Sale dates are relative (days_ago) so demos always have 'yesterday' data.",
+  "customers": [
+    {
+      "user_id": "cliente1988",
+      "name": "Padaria Pão Dourado LTDA",
+      "contact_name": "Mariana",
+      "document": "12.345.678/0001-90",
+      "segment": "Bakery",
+      "city": "Porto Alegre",
+      "since": "2021-03-10",
+      "status": "active",
+      "settlement_account": {"bank": "Santander", "branch": "1234", "account": "****5678"},
+      "plan": {
+        "name": "Getnet Flex D+30",
+        "debit_days": 1,
+        "credit_days": 30,
+        "installment_mode": "monthly",
+        "pix": "instant",
+        "automatic_advance": false,
+        "fees": {"debit": 0.0099, "credit": 0.0299, "credit_installments": 0.0349, "pix": 0.0}
+      },
+      "terminals": [
+        {
+          "serial": "GS-7781-0042",
+          "model": "Get Smart",
+          "status": "offline",
+          "connection": "wifi",
+          "wifi_signal": "weak",
+          "chip_carrier": "Vivo",
+          "chip_signal": "none",
+          "battery": 64,
+          "last_seen_minutes_ago": 95,
+          "firmware": "5.2.1",
+          "firmware_latest": "5.3.0"
+        },
+        {
+          "serial": "GC-3310-0077",
+          "model": "Get Clássica",
+          "status": "online",
+          "connection": "3g",
+          "wifi_signal": "none",
+          "chip_carrier": "Claro",
+          "chip_signal": "good",
+          "battery": 88,
+          "last_seen_minutes_ago": 2,
+          "firmware": "3.8.4",
+          "firmware_latest": "3.8.4"
+        }
+      ],
+      "sales": [
+        {"id": "TX-1001", "days_ago": 1, "time": "08:12", "method": "debit", "brand": "Visa", "amount": 18.50, "status": "approved", "terminal": "GC-3310-0077"},
+        {"id": "TX-1002", "days_ago": 1, "time": "09:40", "method": "credit", "brand": "Mastercard", "amount": 120.00, "installments": 1, "status": "approved", "terminal": "GS-7781-0042"},
+        {"id": "TX-1003", "days_ago": 1, "time": "11:05", "method": "pix", "amount": 42.90, "status": "approved", "terminal": "GS-7781-0042"},
+        {"id": "TX-1004", "days_ago": 1, "time": "12:30", "method": "credit", "brand": "Elo", "amount": 360.00, "installments": 3, "status": "approved", "terminal": "GC-3310-0077"},
+        {"id": "TX-1005", "days_ago": 1, "time": "15:22", "method": "debit", "brand": "Mastercard", "amount": 27.80, "status": "approved", "terminal": "GC-3310-0077"},
+        {"id": "TX-1006", "days_ago": 1, "time": "16:47", "method": "credit", "brand": "Visa", "amount": 89.90, "installments": 1, "status": "declined", "decline_code": "51", "terminal": "GS-7781-0042"},
+        {"id": "TX-1007", "days_ago": 0, "time": "07:58", "method": "debit", "brand": "Elo", "amount": 12.00, "status": "approved", "terminal": "GC-3310-0077"},
+        {"id": "TX-1008", "days_ago": 0, "time": "08:31", "method": "credit", "brand": "Visa", "amount": 55.00, "installments": 1, "status": "declined", "decline_code": "05", "terminal": "GS-7781-0042"},
+        {"id": "TX-1009", "days_ago": 0, "time": "08:33", "method": "credit", "brand": "Visa", "amount": 55.00, "installments": 1, "status": "declined", "decline_code": "57", "terminal": "GS-7781-0042"},
+        {"id": "TX-1010", "days_ago": 2, "time": "10:10", "method": "credit", "brand": "Mastercard", "amount": 240.00, "installments": 1, "status": "approved", "terminal": "GC-3310-0077"},
+        {"id": "TX-1011", "days_ago": 3, "time": "14:00", "method": "debit", "brand": "Visa", "amount": 64.30, "status": "approved", "terminal": "GC-3310-0077"}
+      ]
+    },
+    {
+      "user_id": "cliente2024",
+      "name": "Oficina Auto Center Sul",
+      "contact_name": "Ricardo",
+      "document": "98.765.432/0001-10",
+      "segment": "Auto repair",
+      "city": "Curitiba",
+      "since": "2024-01-15",
+      "status": "active",
+      "settlement_account": {"bank": "Itaú", "branch": "0987", "account": "****4321"},
+      "plan": {
+        "name": "Getnet Receba Rápido D+2",
+        "debit_days": 1,
+        "credit_days": 2,
+        "installment_mode": "advance_d2",
+        "pix": "instant",
+        "automatic_advance": true,
+        "fees": {"debit": 0.0119, "credit": 0.0399, "credit_installments": 0.0499, "pix": 0.0049}
+      },
+      "terminals": [
+        {
+          "serial": "GM-1200-0901",
+          "model": "Get Mini",
+          "status": "online",
+          "connection": "wifi",
+          "wifi_signal": "good",
+          "chip_carrier": "TIM",
+          "chip_signal": "good",
+          "battery": 41,
+          "last_seen_minutes_ago": 1,
+          "firmware": "2.1.0",
+          "firmware_latest": "2.1.0"
+        }
+      ],
+      "sales": [
+        {"id": "TX-2001", "days_ago": 1, "time": "10:00", "method": "credit", "brand": "Visa", "amount": 1500.00, "installments": 6, "status": "approved", "terminal": "GM-1200-0901"},
+        {"id": "TX-2002", "days_ago": 1, "time": "17:30", "method": "debit", "brand": "Elo", "amount": 230.00, "status": "approved", "terminal": "GM-1200-0901"}
+      ]
+    }
+  ]
+}
